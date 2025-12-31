@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Domain\User\Entities;
+namespace App\Application\Auth\DTOs;
 
-class UserEntity
+class RegisteruserDTO
 {
     /**
      * Create a new class instance.
      */
     public function __construct(
-        public readonly int $id,
         public readonly string $name,
         public readonly string $email,
+        public readonly string $password,
     )
     {}
 }
