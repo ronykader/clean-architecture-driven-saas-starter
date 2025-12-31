@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models\app\Infrastructure\Persistence\Eloquent\Models;
+namespace App\Infrastructure\Persistence\Eloquent\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
