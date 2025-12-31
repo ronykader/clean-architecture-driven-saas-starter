@@ -1,1 +1,1 @@
-### Clean Architecture driven sass starter
+It will be open source sass starter
