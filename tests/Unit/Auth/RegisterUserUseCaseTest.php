@@ -20,5 +20,6 @@ it('registers a user via use case', function(){
     );
     expect($user)
         ->toBeInstanceOf(UserEntity::class)
-        ->and($user->email)->toBe('rony@test.com');
+        ->and($user->email)->toBe('rony@test.com')
+        ->and($user->name)->toBe('Rony');
 });
