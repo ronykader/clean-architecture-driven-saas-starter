@@ -4,7 +4,7 @@ namespace App\Presentation\Http\Controllers;
 
 use App\Presentation\Http\Requests\RegisterRequest;
 use App\Application\Auth\DTOs\RegisteruserDTO;
-use App\Application\RegisterUserUseCase;
+use App\Application\Auth\RegisterUserUseCase;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 
