@@ -1,10 +1,10 @@
 <?php
 
-namespace App\app\Infrastructure\Persistence\Eloquent\Repositories;
+namespace App\Infrastructure\Persistence\Eloquent\Repositories;
 
 use App\Domain\User\Entities\UserEntity;
 use App\Domain\User\Repositories\UserRepositoryInterface;
-use App\Models\app\Infrastructure\Persistence\Eloquent\Models\User;
+use App\Infrastructure\Persistence\Eloquent\Models\User;
 use Illuminate\Support\Facades\Hash;
 
 class UserRepository implements UserRepositoryInterface
