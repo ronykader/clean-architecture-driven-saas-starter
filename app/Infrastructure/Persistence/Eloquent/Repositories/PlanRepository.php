@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Domain\Subscription\Repositories;
+namespace App\Infrastructure\Persistence\Eloquent\Repositories;
 use App\Domain\Subscription\Entities\PlanEntity;
+use App\Domain\Subscription\Repositories\PlanRepositoryInterface;
 use App\Infrastructure\Persistence\Eloquent\Models\Plan;
 
 class PlanRepository implements PlanRepositoryInterface
