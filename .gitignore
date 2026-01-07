@@ -4,8 +4,13 @@
 /public/build
 /public/hot
 /public/storage
-/resources/js/actions
-/resources/js/routes
+# Generated frontend files only
+/resources/js/wayfinder/generated
+/resources/js/routes/generated
+
+# Keep source code tracked
+!/resources/js/routes
+!/resources/js/actions
 /resources/js/wayfinder
 /storage/*.key
 /storage/pail
