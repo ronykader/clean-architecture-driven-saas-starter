@@ -14,7 +14,7 @@ Route::get('/', function () {
 
 
 
-Route::post('/register', [AuthController::class, 'register']);
+// Route::post('/register', [AuthController::class, 'register']);
 Route::get('/billing/plans', [BillingController::class, 'plans'])
     ->middleware('auth');
 

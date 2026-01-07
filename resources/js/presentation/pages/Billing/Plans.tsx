@@ -10,6 +10,7 @@ type Plan = {
 export default function Plans({plans}: {plans: Plan[]}) {
   return (
     <div>
+        <h1>Plans</h1>
       {plans.map((plan) => (
         <div key={plan.id} style={{border: '1px solid #ccc', padding: '10px', margin: '10px'}}>
           <h2>{plan.name}</h2>
