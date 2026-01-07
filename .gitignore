@@ -1,61 +1,28 @@
-# ----------------------------
-# Laravel / PHP
-# ----------------------------
-/vendor
-/storage/*.key
-/storage/pail
+/.phpunit.cache
 /bootstrap/ssr
-
-# ----------------------------
-# Environment files
-# ----------------------------
-.env
-.env.*
-!.env.example
-
-# ----------------------------
-# Frontend / Node
-# ----------------------------
 /node_modules
 /public/build
 /public/hot
-
-# ----------------------------
-# OS / IDE
-# ----------------------------
+/public/storage
+/resources/js/actions
+/resources/js/routes
+/resources/js/wayfinder
+/storage/*.key
+/storage/pail
+/vendor
 .DS_Store
-npm-debug.log
-yarn-error.log
-/.idea
-/.vscode
-/.fleet
-/.nova
-/.zed
-
-# ----------------------------
-# Testing / Cache
-# ----------------------------
-/.phpunit.cache
-.phpunit.result.cache
+.env
+.env.backup
+.env.production
 .phpactor.json
-
-# ----------------------------
-# Homestead
-# ----------------------------
+.phpunit.result.cache
 Homestead.json
 Homestead.yaml
-
-# ----------------------------
-# Auth / Secrets
-# ----------------------------
+npm-debug.log
+yarn-error.log
 /auth.json
-
-# ----------------------------
-# IMPORTANT:
-# Keep frontend source TRACKED
-# ----------------------------
-# Do NOT ignore:
-# resources/js/routes
-# resources/js/actions
-# resources/js/pages
-# resources/js/components
+/.fleet
+/.idea
+/.nova
+/.vscode
+/.zed
