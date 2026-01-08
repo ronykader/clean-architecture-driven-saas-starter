@@ -1,3 +1,4 @@
+import CheckoutButton from '@/presentation/components/CheckoutButton';
 import React from 'react'
 
 type Plan = {
@@ -15,6 +16,7 @@ export default function Plans({plans}: {plans: Plan[]}) {
         <div key={plan.id} style={{border: '1px solid #ccc', padding: '10px', margin: '10px'}}>
           <h2>{plan.name}</h2>
           <p>Price: {plan.price / 100} {plan.currency.toUpperCase()}</p>
+          <CheckoutButton plan={plan} />
         </div>
       ))}
     </div>
