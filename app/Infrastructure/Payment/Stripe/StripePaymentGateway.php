@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Infrastructure\Payment\Stripe;
+
+use App\Domain\Payment\Gateways\PaymwentGatewayInterface;
+use Pest\Support\Str;
+use Stripe\StripeClient;
+
+class StripePaymentGateway implements PaymwentGatewayInterface
+{
+
+    private StripeClient $stripe;
+
+    public function __construct()
+    {
+        $this->stripe = new StripeClient(config('services.stripe.secret'));
+    }
+    
+    public function createCheckout(
+        string $customerEmail,
+        string $planName,
+        int $amount,
+        string $currency,
+        string $successUrl,
+        string $cancelUrl
+    ) : array
+    {
+        $session = $this->stripe->checkout->sessions->create([
+            'mode' => 'payment',
+            'customer_email' => $customerEmail,
+            'line_items' => [[
+                'quantity' => 1,
+                'price_data' => [
+                    'currency' => $currency,
+                    'unit_amount' => $amount,
+                    'product_data' => [
+                        'name' => $planName,
+                    ],
+                ],
+            ]],
+            'success_url' => $successUrl,
+            'cancel_url' => $cancelUrl,
+        ]);
+
+        return [
+            'id' => $session->id,
+            'url' => $session->url,
+        ];
+    }
+}
