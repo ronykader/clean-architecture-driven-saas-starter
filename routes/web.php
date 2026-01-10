@@ -2,6 +2,7 @@
 
 use App\Presentation\Http\Controllers\AuthController;
 use App\Presentation\Http\Controllers\BillingController;
+use App\Presentation\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
@@ -17,6 +18,12 @@ Route::get('/', function () {
 // Route::post('/register', [AuthController::class, 'register']);
 Route::get('/billing/plans', [BillingController::class, 'plans'])
     ->middleware('auth');
+
+Route::post('/billing/checkout', CheckoutController::class)
+    ->middleware('auth');
+
+Route::get('/billing/success')->name('billing.success');
+Route::get('/billing/cancel')->name('billing.cancel');
 
 
 
