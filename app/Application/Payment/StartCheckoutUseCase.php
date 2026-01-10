@@ -4,6 +4,7 @@ namespace App\Application\Payment;
 
 use App\Application\Payment\DTOs\StartCheckoutDTO;
 use App\Domain\Payment\Gateways\PaymwentGatewayInterface;
+use App\Infrastructure\Persistence\Eloquent\Models\Payment;
 
 class StartCheckoutUseCase
 {
