@@ -3,6 +3,7 @@
 use App\Presentation\Http\Controllers\AuthController;
 use App\Presentation\Http\Controllers\BillingController;
 use App\Presentation\Http\Controllers\CheckoutController;
+use App\Presentation\Http\Controllers\StripeWebhookController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
@@ -22,11 +23,14 @@ Route::get('/billing/plans', [BillingController::class, 'plans'])
 Route::post('/billing/checkout', CheckoutController::class)
     ->middleware('auth');
 
-Route::get('/billing/success')->name('billing.success');
-Route::get('/billing/cancel')->name('billing.cancel');
+Route::get('/billing/success', function () {
+    return Inertia::render('Billing/Success');
+})->name('billing.success');
+Route::get('/billing/cancel', function () {
+    return Inertia::render('Billing/Cancel');
+})->name('billing.cancel');
 
-
-
+Route::post('/webhooks/stripe', StripeWebhookController::class);
 
 
 
