@@ -33,6 +33,11 @@ Route::get('/billing/cancel', function () {
 Route::post('/webhooks/stripe', StripeWebhookController::class);
 
 
+Route::middleware(['auth', 'subscribed'])->group(function () {
+    Route::get('/dashboard', fn () => inertia('Dashboard/Index'));
+    Route::get('/premium/reports', fn () => 'Premium Content');
+});
+
 
 
 
