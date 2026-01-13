@@ -19,14 +19,13 @@ class StartCheckoutUseCase
             $dto->amount,
             $dto->currency,
             $dto->gateway, 
-            'http://saas-starter.test/billing/success',
-            'http://saas-starter.test/billing/cancel',
-            // route('billing.success', [], true),
-            // route('billing.cancel', [], true),
-            // route('billing.success'),
-            // route('billing.cancel')
+            // 'http://saas-starter.test/billing/success',
+            // 'http://saas-starter.test/billing/cancel',
+            // // route('billing.success', [], true),
+            // // route('billing.cancel', [], true),
+            route('billing.success'),
+            route('billing.cancel')
         );
-        dd($dto, $checkout);
         Payment::create([
             'user_id' => $dto->userId,
             'amount' => $dto->amount,

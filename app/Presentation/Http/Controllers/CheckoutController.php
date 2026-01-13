@@ -22,6 +22,9 @@ class CheckoutController
                 $request->gateway,
             )
         );
+        return response()->json([
+            'checkout_url' => $url,
+        ]);
         return redirect()->away($url);
     }
 }
