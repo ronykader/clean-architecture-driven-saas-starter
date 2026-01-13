@@ -26,7 +26,6 @@ class StartCheckoutUseCase
             // route('billing.success'),
             // route('billing.cancel')
         );
-        dd($dto, $checkout);
         Payment::create([
             'user_id' => $dto->userId,
             'amount' => $dto->amount,

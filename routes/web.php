@@ -4,9 +4,11 @@ use App\Presentation\Http\Controllers\AuthController;
 use App\Presentation\Http\Controllers\BillingController;
 use App\Presentation\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
 
+URL::forceScheme('https');
 Route::get('/', function () {
     return Inertia::render('welcome', [
         'canRegister' => Features::enabled(Features::registration()),
