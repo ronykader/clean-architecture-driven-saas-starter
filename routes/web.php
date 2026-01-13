@@ -4,11 +4,9 @@ use App\Presentation\Http\Controllers\AuthController;
 use App\Presentation\Http\Controllers\BillingController;
 use App\Presentation\Http\Controllers\CheckoutController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\URL;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
 
-URL::forceScheme('https');
 Route::get('/', function () {
     return Inertia::render('welcome', [
         'canRegister' => Features::enabled(Features::registration()),
@@ -24,11 +22,12 @@ Route::get('/billing/plans', [BillingController::class, 'plans'])
 Route::post('/billing/checkout', CheckoutController::class)
     ->middleware('auth');
 
-Route::get('/billing/success')->name('billing.success');
-Route::get('/billing/cancel')->name('billing.cancel');
-
-
-
+Route::get('/billing/success', function () {
+    return Inertia::render('Billing/Success');
+})->name('billing.success');
+Route::get('/billing/cancel', function () {
+    return Inertia::render('Billing/Cancel');
+})->name('billing.cancel');
 
 
 
