@@ -17,7 +17,7 @@ it('starts checkout using gateway', function(){
 
     $useCase = new StartCheckoutUseCase($fakeGateway);
     $url = $useCase->execute(
-        new StartCheckoutDTO(1, 'a@test.com', 'Pro Plan', 2000, 'usd')
+        new StartCheckoutDTO(1, 'a@test.com', 'Pro Plan', 2000, 'usd', 'stripe')
     );
     expect($url)->toBe('https://stripe.test');
 });
