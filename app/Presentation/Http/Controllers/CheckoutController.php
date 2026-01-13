@@ -18,7 +18,8 @@ class CheckoutController
                 $user->email,
                 $request->plan_name,
                 $request->amount,
-                $request->currency
+                $request->currency,
+                $request->gateway,
             )
         );
         return redirect()->away($url);

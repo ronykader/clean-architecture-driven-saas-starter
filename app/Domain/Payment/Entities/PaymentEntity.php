@@ -12,7 +12,6 @@ class PaymentEntity
         public int $userId,
         public int $amount,
         public string $currency,
-        public string $gateway,
         public string $status
     )
     {}

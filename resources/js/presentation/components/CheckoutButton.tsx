@@ -9,6 +9,7 @@ const CheckoutButton = ({plan}) => {
           plan_name: plan.name,
           amount: plan.price,
           currency: plan.currency,
+          'gateway': 'stripe',
         })
       }
     >
