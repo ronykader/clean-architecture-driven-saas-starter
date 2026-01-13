@@ -3,6 +3,7 @@
 use App\Presentation\Http\Controllers\AuthController;
 use App\Presentation\Http\Controllers\BillingController;
 use App\Presentation\Http\Controllers\CheckoutController;
+use App\Presentation\Http\Controllers\StripeWebhookController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
@@ -28,6 +29,8 @@ Route::get('/billing/success', function () {
 Route::get('/billing/cancel', function () {
     return Inertia::render('Billing/Cancel');
 })->name('billing.cancel');
+
+Route::post('/webhooks/stripe', StripeWebhookController::class);
 
 
 
