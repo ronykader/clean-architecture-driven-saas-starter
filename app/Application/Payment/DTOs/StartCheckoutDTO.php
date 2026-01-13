@@ -9,7 +9,8 @@ class StartCheckoutDTO
         public string $email,
         public string $planName,
         public int $amount,
-        public string $currency
+        public string $currency,
+        public string $gateway,
     )
     {}
 }

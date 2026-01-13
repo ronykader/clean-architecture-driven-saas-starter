@@ -38,8 +38,8 @@ class StripePaymentGateway implements PaymwentGatewayInterface
                     ],
                 ],
             ]],
-            'success_url' => $successUrl,
-            'cancel_url' => $cancelUrl,
+            'success_url' => 'http://saas-starter.test/billing/success',
+            'cancel_url' => 'http://saas-starter.test/billing/cancel',
         ]);
 
         return [
