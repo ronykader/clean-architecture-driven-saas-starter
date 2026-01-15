@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);
 
-it('Show active plans to authenticated user', function(){
+it('Show active plans to authenticated user', function () {
     $user = User::factory()->create();
     Plan::create([
         'name' => 'Basic',

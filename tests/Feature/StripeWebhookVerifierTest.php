@@ -11,12 +11,12 @@ it('accepts valid webhook signatures', function () {
             'id' => 'evt_1',
             'type' => 'checkout.session.completed',
             'data' => (object) [
-                'object' => (object) ['id' => 'sess_123']
-            ]
+                'object' => (object) ['id' => 'sess_123'],
+            ],
         ]);
     });
 
     $this->post('/webhooks/stripe', [], [
-        'Stripe-Signature' => 'valid'
+        'Stripe-Signature' => 'valid',
     ])->assertOk();
 });

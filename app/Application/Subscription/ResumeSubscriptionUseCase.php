@@ -8,8 +8,7 @@ use App\Infrastructure\Persistence\Eloquent\Models\Subscription;
 
 class ResumeSubscriptionUseCase
 {
-    public function __construct(private PaymwentGatewayInterface $gateway)
-    {}
+    public function __construct(private PaymwentGatewayInterface $gateway) {}
 
     public function execute(int $userId): void
     {

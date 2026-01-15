@@ -14,8 +14,8 @@ interface PlanRepositoryInterface
 interface SubscriptionRepositoryInterface
 {
     public function create(
-            int $userId,
-            int $planId,
-            string $status
-        ): SubscriptionEntity;
+        int $userId,
+        int $planId,
+        string $status
+    ): SubscriptionEntity;
 }

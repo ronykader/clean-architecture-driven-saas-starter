@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Application\Billing;
 
@@ -40,5 +40,5 @@ class GetBillingOverviewUseCase
             'subscription' => $subscriptionVM,
             'payments' => $payments,
         ];
-    }    
+    }
 }

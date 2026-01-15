@@ -4,9 +4,10 @@ use App\Application\Subscription\ListPlansUseCase;
 use App\Domain\Subscription\Entities\PlanEntity;
 use App\Domain\Subscription\Repositories\PlanRepositoryInterface;
 
-it('lists active plans', function(){
+it('lists active plans', function () {
 
-    $fakeRepo = new class implements PlanRepositoryInterface{
+    $fakeRepo = new class implements PlanRepositoryInterface
+    {
         public function getActivePlans(): array
         {
             return [

@@ -17,7 +17,7 @@ it('returns true when user has active subscription', function () {
         'status' => 'active',
     ]);
 
-    $useCase = new HasActiveSubscriptionUseCase();
+    $useCase = new HasActiveSubscriptionUseCase;
 
     expect($useCase->execute($user->id))->toBeTrue();
 });

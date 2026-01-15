@@ -18,9 +18,9 @@ class HandleSuccessfulPaymentUseCase
         }
 
         $payment = Payment::where(
-            'gateway_reference', 
+            'gateway_reference',
             $dto->checkoutSessionId
-            )->firstOrFail();
+        )->firstOrFail();
 
         $payment->update([
             'status' => PaymentStatus::PAID->value,
@@ -28,6 +28,7 @@ class HandleSuccessfulPaymentUseCase
 
         Subscription::where('id', $payment->subscription_id)->update([
             'status' => SubscriptionStatus::ACTIVE->value,
+            'gateway_subscription_id' => $dto->stripeSubscriptionId,
         ]);
 
         WebhookEvent::create([

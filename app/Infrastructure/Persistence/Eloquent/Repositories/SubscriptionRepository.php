@@ -7,7 +7,7 @@ use App\Infrastructure\Persistence\Eloquent\Models\Subscription;
 
 class SubscriptionRepository implements SubscriptionRepositoryInterface
 {
-    public function create( int $userId, int $planId, string $status ): SubscriptionEntity 
+    public function create(int $userId, int $planId, string $status): SubscriptionEntity
     {
         $subscription = Subscription::create([
             'user_id' => $userId,

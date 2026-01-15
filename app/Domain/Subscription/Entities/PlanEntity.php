@@ -14,6 +14,5 @@ class PlanEntity
         public readonly int $price,
         public readonly string $currency,
         public readonly bool $isActive,
-    )
-    {}
+    ) {}
 }

@@ -3,19 +3,17 @@
 namespace App\Infrastructure\Payment\Stripe;
 
 use App\Domain\Payment\Gateways\PaymwentGatewayInterface;
-use Pest\Support\Str;
 use Stripe\StripeClient;
 
 class StripePaymentGateway implements PaymwentGatewayInterface
 {
-
     private StripeClient $stripe;
 
     public function __construct()
     {
         $this->stripe = new StripeClient(config('services.stripe.secret'));
     }
-    
+
     public function createCheckout(
         string $customerEmail,
         string $planName,
@@ -23,16 +21,18 @@ class StripePaymentGateway implements PaymwentGatewayInterface
         string $currency,
         string $successUrl,
         string $cancelUrl
-    ) : array
-    {
+    ): array {
         $session = $this->stripe->checkout->sessions->create([
-            'mode' => 'payment',
+            'mode' => 'subscription',
             'customer_email' => $customerEmail,
             'line_items' => [[
                 'quantity' => 1,
                 'price_data' => [
                     'currency' => $currency,
                     'unit_amount' => $amount,
+                    'recurring' => [
+                        'interval' => 'month', // REQUIRED
+                    ],
                     'product_data' => [
                         'name' => $planName,
                     ],
@@ -51,7 +51,7 @@ class StripePaymentGateway implements PaymwentGatewayInterface
     public function cancelSubscription(string $subscriptionId): void
     {
         $this->stripe->subscriptions->update($subscriptionId, [
-        'cancel_at_period_end' => true,
+            'cancel_at_period_end' => true,
         ]);
     }
 

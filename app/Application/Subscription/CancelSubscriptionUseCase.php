@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Application\Subscription;
 
@@ -8,13 +8,11 @@ use App\Infrastructure\Persistence\Eloquent\Models\Subscription;
 
 class CancelSubscriptionUseCase
 {
-    public function __construct(private PaymwentGatewayInterface $gateway)
-    {}
+    public function __construct(private PaymwentGatewayInterface $gateway) {}
 
     public function execute(int $userId): void
     {
         $subscription = Subscription::where('user_id', $userId)->where('status', SubscriptionStatus::ACTIVE->value)->firstOrFail();
-
         $this->gateway->cancelSubscription($subscription->gateway_subscription_id);
         $subscription->update([
             'status' => SubscriptionStatus::CANCELLED->value,

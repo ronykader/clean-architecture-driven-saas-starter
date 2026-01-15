@@ -4,10 +4,8 @@ namespace App\Infrastructure\Persistence\Eloquent\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-
 class Payment extends Model
 {
-
     protected $fillable = [
         'user_id',
         'amount',
@@ -19,7 +17,7 @@ class Payment extends Model
         'description',
         'subscription_id',
         'paid_at',
-        'gateway_reference'
+        'gateway_reference',
     ];
 
     protected $casts = [

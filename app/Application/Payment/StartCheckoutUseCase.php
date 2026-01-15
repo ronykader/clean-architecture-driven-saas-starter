@@ -10,17 +10,16 @@ use App\Infrastructure\Persistence\Eloquent\Models\Subscription;
 
 class StartCheckoutUseCase
 {
-    public function __construct( private PaymwentGatewayInterface $gateway)
-    {}
+    public function __construct(private PaymwentGatewayInterface $gateway) {}
 
-    public function execute(StartCheckoutDTO $dto) : string
+    public function execute(StartCheckoutDTO $dto): string
     {
         $checkout = $this->gateway->createCheckout(
             $dto->email,
             $dto->planName,
             $dto->amount,
             $dto->currency,
-            $dto->gateway, 
+            $dto->gateway,
             // 'http://saas-starter.test/billing/success',
             // 'http://saas-starter.test/billing/cancel',
             // // route('billing.success', [], true),
@@ -43,6 +42,7 @@ class StartCheckoutUseCase
             'status' => 'pending',
             'payload' => $checkout,
         ]);
+
         return $checkout['url'];
     }
 }

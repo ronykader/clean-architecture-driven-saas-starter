@@ -11,7 +11,9 @@ interface PaymwentGatewayInterface
         string $currency,
         string $successurl,
         string $cancelurl
-    ) : array;
+    ): array;
+
     public function cancelSubscription(string $subscriptionId): void;
+
     public function resumeSubscription(string $subscriptionId): void;
 }
