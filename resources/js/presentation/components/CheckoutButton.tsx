@@ -8,6 +8,7 @@ const CheckoutButton = ({plan}) => {
             plan_name: plan.name,
             amount: plan.price,
             currency: plan.currency,
+            planId: plan.id,
             'gateway': 'stripe',
         });
         // Handle response (e.g., redirect to checkout page)

@@ -16,7 +16,7 @@ class UserRepository implements UserRepositoryInterface
             'email' => $email,
             'password' => Hash::make($password),
         ]);
-        
+
         return new UserEntity(
             id: $user->id,
             name: $user->name,

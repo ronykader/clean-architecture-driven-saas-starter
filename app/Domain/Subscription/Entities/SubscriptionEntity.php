@@ -12,6 +12,5 @@ class SubscriptionEntity
         public readonly int $userId,
         public readonly int $planId,
         public readonly string $status,
-    )
-    {}
+    ) {}
 }

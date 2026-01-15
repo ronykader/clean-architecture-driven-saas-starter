@@ -11,6 +11,6 @@ class StartCheckoutDTO
         public int $amount,
         public string $currency,
         public string $gateway,
-    )
-    {}
+        public ?int $planId = null
+    ) {}
 }

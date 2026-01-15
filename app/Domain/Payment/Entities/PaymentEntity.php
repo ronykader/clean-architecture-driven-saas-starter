@@ -14,6 +14,5 @@ class PaymentEntity
         public string $currency,
         public string $gateway,
         public string $status
-    )
-    {}
+    ) {}
 }

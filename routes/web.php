@@ -1,9 +1,12 @@
 <?php
 
+use App\Presentation\Http\Controllers\AdminBillingController;
+use App\Presentation\Http\Controllers\AdminBillingExportController;
 use App\Presentation\Http\Controllers\AuthController;
 use App\Presentation\Http\Controllers\BillingController;
 use App\Presentation\Http\Controllers\CheckoutController;
 use App\Presentation\Http\Controllers\StripeWebhookController;
+use App\Presentation\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
@@ -14,11 +17,9 @@ Route::get('/', function () {
     ]);
 })->name('home');
 
-
-
 // Route::post('/register', [AuthController::class, 'register']);
 Route::get('/billing/plans', [BillingController::class, 'plans'])
-    ->middleware('auth');
+    ->middleware('auth')->name('billing.plans');
 
 Route::post('/billing/checkout', CheckoutController::class)
     ->middleware('auth');
@@ -30,18 +31,38 @@ Route::get('/billing/cancel', function () {
     return Inertia::render('Billing/Cancel');
 })->name('billing.cancel');
 
+Route::get('/billing', [BillingController::class, 'index'])
+    ->middleware('auth');
+
 Route::post('/webhooks/stripe', StripeWebhookController::class);
 
-
-
-
-
-
-
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
-    })->name('dashboard');
+Route::middleware(['auth', 'subscribed'])->group(function () {
+    Route::get('/dashboard', fn () => inertia('Dashboard/Index'));
+    Route::get('/premium/reports', fn () => 'Premium Content');
 });
+
+Route::post('/subscription/cancel', [SubscriptionController::class, 'cancel'])
+    ->middleware('auth');
+
+Route::get('/admin/billing', [AdminBillingController::class, 'index'])
+    ->middleware(['auth', 'admin']);
+
+Route::get('/admin/billing/export', AdminBillingExportController::class)
+    ->middleware(['auth', 'admin']);
+
+Route::post('/subscription/resume', [SubscriptionController::class, 'resume'])
+    ->middleware('auth');
+
+Route::get('/__debug/stripe-secret', function () {
+    return config('services.stripe.webhook_secret')
+        ? 'WEBHOOK SECRET LOADED'
+        : 'WEBHOOK SECRET MISSING';
+});
+
+// Route::middleware(['auth', 'verified'])->group(function () {
+//     Route::get('dashboard', function () {
+//         return Inertia::render('dashboard');
+//     })->name('dashboard');
+// });
 
 require __DIR__.'/settings.php';

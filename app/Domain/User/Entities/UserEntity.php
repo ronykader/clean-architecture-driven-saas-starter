@@ -11,6 +11,5 @@ class UserEntity
         public readonly int $id,
         public readonly string $name,
         public readonly string $email,
-    )
-    {}
+    ) {}
 }

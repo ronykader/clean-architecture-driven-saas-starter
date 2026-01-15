@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Infrastructure\Persistence\Eloquent\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
