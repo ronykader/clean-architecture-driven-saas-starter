@@ -86,7 +86,7 @@ const Dashboard = ({
                 <td className="px-3 py-2">
                   <Badge label={p.status} />
                 </td>
-                <td className="px-3 py-2">{p.createdAt}</td>
+                <td className="px-3 py-2">{p.paidAt}</td>
               </tr>
             ))}
           </Table>

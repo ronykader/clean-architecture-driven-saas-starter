@@ -31,7 +31,8 @@ class StripeWebhookController
                 new WebhookEventDTO(
                     $event->id,
                     $event->type,
-                    $event->data->object->id
+                    $event->data->object->id,
+                    $event->data->object->subscription
                 )
             );
             Log::info('Stripe webhook worked: '.$event->data->object->id);

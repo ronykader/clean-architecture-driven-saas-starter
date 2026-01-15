@@ -1,5 +1,7 @@
 <?php
 
+use App\Presentation\Http\Controllers\AdminBillingController;
+use App\Presentation\Http\Controllers\AdminBillingExportController;
 use App\Presentation\Http\Controllers\AuthController;
 use App\Presentation\Http\Controllers\BillingController;
 use App\Presentation\Http\Controllers\CheckoutController;
@@ -39,14 +41,17 @@ Route::middleware(['auth', 'subscribed'])->group(function () {
     Route::get('/premium/reports', fn () => 'Premium Content');
 });
 
-
 Route::post('/subscription/cancel', [SubscriptionController::class, 'cancel'])
     ->middleware('auth');
 
+Route::get('/admin/billing', [AdminBillingController::class, 'index'])
+    ->middleware(['auth', 'admin']);
+
+Route::get('/admin/billing/export', AdminBillingExportController::class)
+    ->middleware(['auth', 'admin']);
+
 Route::post('/subscription/resume', [SubscriptionController::class, 'resume'])
     ->middleware('auth');
-
-
 
 Route::get('/__debug/stripe-secret', function () {
     return config('services.stripe.webhook_secret')

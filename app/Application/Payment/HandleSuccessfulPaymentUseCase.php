@@ -28,6 +28,7 @@ class HandleSuccessfulPaymentUseCase
 
         Subscription::where('id', $payment->subscription_id)->update([
             'status' => SubscriptionStatus::ACTIVE->value,
+            'gateway_subscription_id' => $dto->stripeSubscriptionId,
         ]);
 
         WebhookEvent::create([

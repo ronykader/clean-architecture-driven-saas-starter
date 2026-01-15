@@ -13,7 +13,6 @@ class CancelSubscriptionUseCase
     public function execute(int $userId): void
     {
         $subscription = Subscription::where('user_id', $userId)->where('status', SubscriptionStatus::ACTIVE->value)->firstOrFail();
-
         $this->gateway->cancelSubscription($subscription->gateway_subscription_id);
         $subscription->update([
             'status' => SubscriptionStatus::CANCELLED->value,

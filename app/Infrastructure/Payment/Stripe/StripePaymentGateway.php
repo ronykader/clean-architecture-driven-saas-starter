@@ -23,13 +23,16 @@ class StripePaymentGateway implements PaymwentGatewayInterface
         string $cancelUrl
     ): array {
         $session = $this->stripe->checkout->sessions->create([
-            'mode' => 'payment',
+            'mode' => 'subscription',
             'customer_email' => $customerEmail,
             'line_items' => [[
                 'quantity' => 1,
                 'price_data' => [
                     'currency' => $currency,
                     'unit_amount' => $amount,
+                    'recurring' => [
+                        'interval' => 'month', // REQUIRED
+                    ],
                     'product_data' => [
                         'name' => $planName,
                     ],
