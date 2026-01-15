@@ -2,6 +2,7 @@ import Badge from '@/presentation/components/Badge';
 import Button from '@/presentation/components/Button';
 import Card from '@/presentation/components/Card';
 import Table from '@/presentation/components/Table';
+import { router } from '@inertiajs/react';
 import React from 'react';
 
 type Subscription = {
@@ -47,8 +48,22 @@ const Dashboard = ({
             {/* Cancel/Resume buttons will go here */}
             <div>
               {subscription.status === 'active' && (
-                <Button variant="danger">Cancel Subscription</Button>
-              )}
+                <Button
+                    variant="danger"
+                    onClick={() => router.post('/subscription/cancel')}
+                >
+                    Cancel Subscription
+                </Button>
+                )}
+
+                {subscription.status === 'cancelled' && (
+                <Button
+                    variant="primary"
+                    onClick={() => router.post('/subscription/resume')}
+                >
+                    Resume Subscription
+                </Button>
+                )}
             </div>
           </div>
         ) : (

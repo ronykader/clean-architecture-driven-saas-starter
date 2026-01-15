@@ -4,6 +4,7 @@ use App\Presentation\Http\Controllers\AuthController;
 use App\Presentation\Http\Controllers\BillingController;
 use App\Presentation\Http\Controllers\CheckoutController;
 use App\Presentation\Http\Controllers\StripeWebhookController;
+use App\Presentation\Http\Controllers\SubscriptionController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
@@ -37,6 +38,15 @@ Route::middleware(['auth', 'subscribed'])->group(function () {
     Route::get('/dashboard', fn () => inertia('Dashboard/Index'));
     Route::get('/premium/reports', fn () => 'Premium Content');
 });
+
+
+Route::post('/subscription/cancel', [SubscriptionController::class, 'cancel'])
+    ->middleware('auth');
+
+Route::post('/subscription/resume', [SubscriptionController::class, 'resume'])
+    ->middleware('auth');
+
+
 
 Route::get('/__debug/stripe-secret', function () {
     return config('services.stripe.webhook_secret')
