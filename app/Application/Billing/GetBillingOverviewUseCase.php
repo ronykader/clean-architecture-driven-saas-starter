@@ -32,10 +32,6 @@ class GetBillingOverviewUseCase
                 $payment->amount,
                 $payment->currency,
                 $payment->status,
-                $payment->payment_method,
-                $payment->transaction_id,
-                $payment->description,
-                $payment->created_at->toDateString(),
                 $payment->updated_at ? $payment->updated_at->toDateString() : null
             ))
             ->toArray();

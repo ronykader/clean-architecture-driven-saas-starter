@@ -47,4 +47,18 @@ class StripePaymentGateway implements PaymwentGatewayInterface
             'url' => $session->url,
         ];
     }
+
+    public function cancelSubscription(string $subscriptionId): void
+    {
+        $this->stripe->subscriptions->update($subscriptionId, [
+        'cancel_at_period_end' => true,
+        ]);
+    }
+
+    public function resumeSubscription(string $subscriptionId): void
+    {
+        $this->stripe->subscriptions->update($subscriptionId, [
+            'cancel_at_period_end' => false,
+        ]);
+    }
 }

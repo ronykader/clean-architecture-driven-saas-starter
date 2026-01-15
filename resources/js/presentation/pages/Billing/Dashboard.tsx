@@ -1,3 +1,7 @@
+import Badge from '@/presentation/components/Badge';
+import Button from '@/presentation/components/Button';
+import Card from '@/presentation/components/Card';
+import Table from '@/presentation/components/Table';
 import React from 'react';
 
 type Subscription = {
@@ -22,50 +26,58 @@ const Dashboard = ({
   payments: Payment[];
 }) => {
     return (
-        <div>
-            <h1>Billing</h1>
-
-      <section>
-        <h2>Subscription</h2>
+        <div className="space-y-8">
+      {/* Subscription */}
+      <Card title="Subscription">
         {subscription ? (
-          <ul>
-            <li>Plan: {subscription.planName}</li>
-            <li>Status: {subscription.status}</li>
-            <li>Started At: {subscription.startedAt}</li>
-          </ul>
-        ) : (
-          <p>No active subscription</p>
-        )}
-      </section>
+          <div className="flex items-center justify-between">
+            <div className="space-y-2">
+              <p>
+                <strong>Plan:</strong> {subscription.planName}
+              </p>
+              <p>
+                <strong>Status:</strong>{' '}
+                <Badge label={subscription.status} />
+              </p>
+              <p>
+                <strong>Started:</strong> {subscription.startedAt}
+              </p>
+            </div>
 
-      <section>
-        <h2>Payments</h2>
-        {payments.length === 0 ? (
-          <p>No payments found</p>
+            {/* Cancel/Resume buttons will go here */}
+            <div>
+              {subscription.status === 'active' && (
+                <Button variant="danger">Cancel Subscription</Button>
+              )}
+            </div>
+          </div>
         ) : (
-          <table>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Amount</th>
-                <th>Status</th>
-                <th>Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              {payments.map(p => (
-                <tr key={p.id}>
-                  <td>{p.id}</td>
-                  <td>{p.amount / 100} {p.currency.toUpperCase()}</td>
-                  <td>{p.status}</td>
-                  <td>{p.createdAt}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <p>No subscription found.</p>
         )}
-      </section>
-        </div>
+      </Card>
+
+      {/* Payments */}
+      <Card title="Payment History">
+        {payments.length === 0 ? (
+          <p>No payments yet.</p>
+        ) : (
+          <Table headers={['ID', 'Amount', 'Status', 'Date']}>
+            {payments.map((p: any) => (
+              <tr key={p.id} className="border-b last:border-0">
+                <td className="px-3 py-2">{p.id}</td>
+                <td className="px-3 py-2">
+                  {p.amount / 100} {p.currency.toUpperCase()}
+                </td>
+                <td className="px-3 py-2">
+                  <Badge label={p.status} />
+                </td>
+                <td className="px-3 py-2">{p.createdAt}</td>
+              </tr>
+            ))}
+          </Table>
+        )}
+      </Card>
+    </div>
     );
 };
 

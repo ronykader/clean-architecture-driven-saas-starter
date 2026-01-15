@@ -11,9 +11,7 @@ class BillingController
 {
     public function index(Request $request, GetBillingOverviewUseCase $useCase)
     {
-        return Inertia::render('Billing/Dashboard', [
-            'overview' => $useCase->execute($request->user()->id),
-        ]);
+        return Inertia::render('Billing/Dashboard', $useCase->execute($request->user()->id));
     }
     
     public function plans(ListPlansUseCase $useCase)

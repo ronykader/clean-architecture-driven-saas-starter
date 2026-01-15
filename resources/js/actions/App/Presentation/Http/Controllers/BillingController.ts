@@ -1,7 +1,7 @@
 import { queryParams, type RouteQueryOptions, type RouteDefinition, type RouteFormDefinition } from './../../../../../wayfinder'
 /**
 * @see \App\Presentation\Http\Controllers\BillingController::plans
-* @see app/Presentation/Http/Controllers/BillingController.php:19
+* @see app/Presentation/Http/Controllers/BillingController.php:17
 * @route '/billing/plans'
 */
 export const plans = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -16,7 +16,7 @@ plans.definition = {
 
 /**
 * @see \App\Presentation\Http\Controllers\BillingController::plans
-* @see app/Presentation/Http/Controllers/BillingController.php:19
+* @see app/Presentation/Http/Controllers/BillingController.php:17
 * @route '/billing/plans'
 */
 plans.url = (options?: RouteQueryOptions) => {
@@ -25,7 +25,7 @@ plans.url = (options?: RouteQueryOptions) => {
 
 /**
 * @see \App\Presentation\Http\Controllers\BillingController::plans
-* @see app/Presentation/Http/Controllers/BillingController.php:19
+* @see app/Presentation/Http/Controllers/BillingController.php:17
 * @route '/billing/plans'
 */
 plans.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
@@ -35,7 +35,7 @@ plans.get = (options?: RouteQueryOptions): RouteDefinition<'get'> => ({
 
 /**
 * @see \App\Presentation\Http\Controllers\BillingController::plans
-* @see app/Presentation/Http/Controllers/BillingController.php:19
+* @see app/Presentation/Http/Controllers/BillingController.php:17
 * @route '/billing/plans'
 */
 plans.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
@@ -45,7 +45,7 @@ plans.head = (options?: RouteQueryOptions): RouteDefinition<'head'> => ({
 
 /**
 * @see \App\Presentation\Http\Controllers\BillingController::plans
-* @see app/Presentation/Http/Controllers/BillingController.php:19
+* @see app/Presentation/Http/Controllers/BillingController.php:17
 * @route '/billing/plans'
 */
 const plansForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -55,7 +55,7 @@ const plansForm = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => (
 
 /**
 * @see \App\Presentation\Http\Controllers\BillingController::plans
-* @see app/Presentation/Http/Controllers/BillingController.php:19
+* @see app/Presentation/Http/Controllers/BillingController.php:17
 * @route '/billing/plans'
 */
 plansForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
@@ -65,7 +65,7 @@ plansForm.get = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
 
 /**
 * @see \App\Presentation\Http\Controllers\BillingController::plans
-* @see app/Presentation/Http/Controllers/BillingController.php:19
+* @see app/Presentation/Http/Controllers/BillingController.php:17
 * @route '/billing/plans'
 */
 plansForm.head = (options?: RouteQueryOptions): RouteFormDefinition<'get'> => ({
