@@ -12,7 +12,7 @@ class Plan extends Model
         'slug',
         'price',
         'currency',
-        'is_active'
+        'is_active',
     ];
 
     public function subscriptions(): HasMany

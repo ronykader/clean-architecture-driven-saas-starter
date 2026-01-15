@@ -13,12 +13,11 @@ class BillingController
     {
         return Inertia::render('Billing/Dashboard', $useCase->execute($request->user()->id));
     }
-    
+
     public function plans(ListPlansUseCase $useCase)
     {
         return Inertia::render('Billing/Plans', [
             'plans' => $useCase->execute(),
         ]);
     }
-
 }

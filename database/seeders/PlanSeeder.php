@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Infrastructure\Persistence\Eloquent\Models\Plan;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class PlanSeeder extends Seeder

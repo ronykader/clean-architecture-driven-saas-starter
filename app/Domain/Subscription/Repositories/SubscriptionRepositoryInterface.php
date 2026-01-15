@@ -2,7 +2,4 @@
 
 namespace App\Domain\Subscription\Repositories;
 
-interface SubscriptionRepositoryInterface
-{
-    
-}
+interface SubscriptionRepositoryInterface {}

@@ -15,15 +15,15 @@ class StripeWebhookController
         Request $request,
         StripeWebhookVerifier $verifier,
         HandleSuccessfulPaymentUseCase $useCase
-    )
-    {
+    ) {
         try {
             $event = $verifier->verify(
                 $request->getContent(),
                 $request->header('Stripe-Signature')
             );
         } catch (\Exception $e) {
-            Log::error('Stripe webhook verification failed: ' . $e->getMessage());
+            Log::error('Stripe webhook verification failed: '.$e->getMessage());
+
             return response('Invalid signature', 400);
         }
         if ($event->type === 'checkout.session.completed') {
@@ -34,8 +34,9 @@ class StripeWebhookController
                     $event->data->object->id
                 )
             );
-             Log::info('Stripe webhook worked: ' . $event->data->object->id);
+            Log::info('Stripe webhook worked: '.$event->data->object->id);
         }
-        return response('ok', Response::HTTP_OK); 
+
+        return response('ok', Response::HTTP_OK);
     }
 }

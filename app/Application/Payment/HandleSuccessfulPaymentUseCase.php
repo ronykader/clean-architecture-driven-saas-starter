@@ -18,9 +18,9 @@ class HandleSuccessfulPaymentUseCase
         }
 
         $payment = Payment::where(
-            'gateway_reference', 
+            'gateway_reference',
             $dto->checkoutSessionId
-            )->firstOrFail();
+        )->firstOrFail();
 
         $payment->update([
             'status' => PaymentStatus::PAID->value,

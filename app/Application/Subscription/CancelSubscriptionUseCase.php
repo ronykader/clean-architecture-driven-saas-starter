@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Application\Subscription;
 
@@ -8,8 +8,7 @@ use App\Infrastructure\Persistence\Eloquent\Models\Subscription;
 
 class CancelSubscriptionUseCase
 {
-    public function __construct(private PaymwentGatewayInterface $gateway)
-    {}
+    public function __construct(private PaymwentGatewayInterface $gateway) {}
 
     public function execute(int $userId): void
     {

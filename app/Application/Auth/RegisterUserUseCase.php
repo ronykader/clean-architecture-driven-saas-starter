@@ -12,8 +12,8 @@ class RegisterUserUseCase
      */
     public function __construct(
         private UserRepositoryInterface $users,
-    )
-    {}
+    ) {}
+
     public function execute(RegisteruserDTO $dto)
     {
         return $this->users->create(

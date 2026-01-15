@@ -10,7 +10,7 @@ uses(RefreshDatabase::class);
 
 it('active subscription after payment is successful', function () {
     $subscription = Subscription::factory()->create([
-        'status' => 'pending'
+        'status' => 'pending',
     ]);
     $payment = Payment::factory()->create([
         'subscription_id' => $subscription->id,
@@ -18,7 +18,7 @@ it('active subscription after payment is successful', function () {
         'gateway_reference' => 'cs_test_12345',
     ]);
 
-    $useCase = new HandleSuccessfulPaymentUseCase();
+    $useCase = new HandleSuccessfulPaymentUseCase;
     $useCase->execute(
         new WebhookEventDTO('evt_12345', 'checkout.session.completed', 'cs_test_12345')
     );

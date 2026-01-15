@@ -7,8 +7,7 @@ use App\Domain\Subscription\Repositories\SubscriptionRepositoryInterface;
 
 class CreateSubscriptionUseCase
 {
-    public function __construct(private SubscriptionRepositoryInterface $subscriptions)
-    {}
+    public function __construct(private SubscriptionRepositoryInterface $subscriptions) {}
 
     public function execute(int $userId, int $planId)
     {

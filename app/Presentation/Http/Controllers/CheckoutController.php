@@ -23,9 +23,11 @@ class CheckoutController
                 $request->planId ?? null
             )
         );
+
         return response()->json([
             'checkout_url' => $url,
         ]);
+
         return redirect()->away($url);
     }
 }
