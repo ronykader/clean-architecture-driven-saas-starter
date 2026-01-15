@@ -25,7 +25,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'subscribed' => EnsureActiveSubscription::class,
         ]);
+        $middleware->validateCsrfTokens(except: [
+            'webhooks/stripe',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
-        //
+        
     })->create();

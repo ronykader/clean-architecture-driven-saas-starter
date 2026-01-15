@@ -18,7 +18,7 @@ Route::get('/', function () {
 
 // Route::post('/register', [AuthController::class, 'register']);
 Route::get('/billing/plans', [BillingController::class, 'plans'])
-    ->middleware('auth');
+    ->middleware('auth')->name('billing.plans');
 
 Route::post('/billing/checkout', CheckoutController::class)
     ->middleware('auth');
@@ -29,6 +29,9 @@ Route::get('/billing/success', function () {
 Route::get('/billing/cancel', function () {
     return Inertia::render('Billing/Cancel');
 })->name('billing.cancel');
+
+Route::get('/billing', [BillingController::class, 'index'])
+    ->middleware('auth');
 
 Route::post('/webhooks/stripe', StripeWebhookController::class);
 
@@ -42,11 +45,17 @@ Route::middleware(['auth', 'subscribed'])->group(function () {
 
 
 
-
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('dashboard', function () {
-        return Inertia::render('dashboard');
-    })->name('dashboard');
+Route::get('/__debug/stripe-secret', function () {
+    return config('services.stripe.webhook_secret')
+        ? 'WEBHOOK SECRET LOADED'
+        : 'WEBHOOK SECRET MISSING';
 });
+
+
+// Route::middleware(['auth', 'verified'])->group(function () {
+//     Route::get('dashboard', function () {
+//         return Inertia::render('dashboard');
+//     })->name('dashboard');
+// });
 
 require __DIR__.'/settings.php';

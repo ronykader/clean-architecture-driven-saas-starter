@@ -8,9 +8,12 @@ use Illuminate\Http\Request;
 
 class EnsureActiveSubscription
 {
-    public function handle(Request $request, Closure $next, HasActiveSubscriptionUseCase $useCase)
+    public function __construct(
+        private HasActiveSubscriptionUseCase $useCase
+    ) {}
+    public function handle(Request $request, Closure $next)
     {
-        if (! $useCase->execute($request->user()->id)) {
+        if (! $this->useCase->execute($request->user()->id)) {
             return redirect()->route('billing.plans');
         }
         return $next($request);

@@ -20,6 +20,7 @@ class CheckoutController
                 $request->amount,
                 $request->currency,
                 $request->gateway,
+                $request->planId ?? null
             )
         );
         return response()->json([
