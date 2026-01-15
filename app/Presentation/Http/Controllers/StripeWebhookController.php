@@ -6,6 +6,7 @@ use App\Application\Payment\DTOs\WebhookEventDTO;
 use App\Application\Payment\HandleSuccessfulPaymentUseCase;
 use App\Infrastructure\Payment\Stripe\StripeWebhookVerifier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Symfony\Component\HttpFoundation\Response;
 
 class StripeWebhookController
@@ -22,6 +23,7 @@ class StripeWebhookController
                 $request->header('Stripe-Signature')
             );
         } catch (\Exception $e) {
+            Log::error('Stripe webhook verification failed: ' . $e->getMessage());
             return response('Invalid signature', 400);
         }
         if ($event->type === 'checkout.session.completed') {
@@ -32,6 +34,7 @@ class StripeWebhookController
                     $event->data->object->id
                 )
             );
+             Log::info('Stripe webhook worked: ' . $event->data->object->id);
         }
         return response('ok', Response::HTTP_OK); 
     }

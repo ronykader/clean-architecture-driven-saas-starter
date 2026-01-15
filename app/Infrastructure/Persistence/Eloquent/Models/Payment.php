@@ -17,7 +17,9 @@ class Payment extends Model
         'payment_method',
         'transaction_id',
         'description',
+        'subscription_id',
         'paid_at',
+        'gateway_reference'
     ];
 
     protected $casts = [
