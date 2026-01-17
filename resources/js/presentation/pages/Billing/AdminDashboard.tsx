@@ -16,6 +16,7 @@ const AdminDashboard = ({
                 >
                 Export CSV
             </Button>
+            
             <Card title="Subscriptions">
                 <Table headers={['User', 'Plan', 'Status', 'Stripe ID', 'Date']}>
                 {subscriptions.map((s: any) => (
@@ -33,6 +34,19 @@ const AdminDashboard = ({
                 ))}
                 </Table>
             </Card>
+
+            <form className="flex gap-4 mb-4">
+                <input type="date" name="from" />
+                <input type="date" name="to" />
+
+                <select name="status">
+                    <option value="">All</option>
+                    <option value="paid">Paid</option>
+                    <option value="failed">Failed</option>
+                </select>
+
+                <Button type="submit">Filter</Button>
+            </form>
 
             <Card title="Payments">
                 <Table headers={['User', 'Amount', 'Status', 'Stripe Ref', 'Date']}>

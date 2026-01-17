@@ -11,17 +11,17 @@ class AdminBillingReportUseCase
 
     public function execute(array $filters = []): array
     {
-        // $subscriptions = Subscription::with(['user', 'plan'])
-        //     ->latest()
-        //     ->get()
-        //     ->map(fn($s) => [
-        //         'id' => $s->id,
-        //         'user_email' => $s->user->email,
-        //         'plan_name' => $s->plan->name,
-        //         'status' => $s->status,
-        //         'stripe_subscription_id' => $s->gateway_subscription_id,
-        //         'started_at' => $s->created_at->toDateTimeString(),
-        //     ]);
+        $subscriptions = Subscription::with(['user', 'plan'])
+            ->latest()
+            ->get()
+            ->map(fn($s) => [
+                'id' => $s->id,
+                'user_email' => $s->user->email,
+                'plan_name' => $s->plan->name,
+                'status' => $s->status,
+                'stripe_subscription_id' => $s->gateway_subscription_id,
+                'started_at' => $s->created_at->toDateTimeString(),
+            ]);
         // $payments = Payment::with('user')
         //     ->latest()
         //     ->get()
@@ -54,7 +54,6 @@ class AdminBillingReportUseCase
         }
 
         $payments = $paymentsQuery->latest()->get();
-        // subscriptions unchanged
 
         return compact('payments', 'subscriptions');
     }
